@@ -2,8 +2,6 @@
 meta:
   zones:
     z1: (( Resources.SubnetAvailabilityZone.CFZ1 ))
-    z2: (( Resources.SubnetAvailabilityZone.CFZ2 ))
-    z3: (( Resources.SubnetAvailabilityZone.CFZ3 ))
 
   fog_config:
     region: (( Region ))
@@ -21,28 +19,6 @@ networks:
         cloud_properties:
           security_groups: (( [Resources.SecurityGroupName.Internal] ))
           subnet: (( Resources.Subnet.CFZ1 ))
-
-  - name: cf2
-    subnets:
-      - range:    (( Resources.SubnetCIDR.CFZ2 ))
-        reserved: (( [Resources.SubnetOctets.CFZ2.[2] ".2 - " Resources.SubnetOctets.CFZ2.[2] ".9"] ))
-        static:   (( [Resources.SubnetOctets.CFZ2.[2] ".10 - " Resources.SubnetOctets.CFZ2.[2] ".63"] ))
-        gateway:  (( Resources.SubnetOctets.CFZ2.[2] ".1" ))
-        dns:      (( [Resources.SubnetOctets.BOSHZ1.[2] ".2"] ))
-        cloud_properties:
-          security_groups: (( [Resources.SecurityGroupName.Internal] ))
-          subnet: (( Resources.Subnet.CFZ2 ))
-
-  - name: cf3
-    subnets:
-      - range:    (( Resources.SubnetCIDR.CFZ3 ))
-        reserved: (( [Resources.SubnetOctets.CFZ3.[2] ".2 - " Resources.SubnetOctets.CFZ3.[2] ".9"] ))
-        static:   (( [Resources.SubnetOctets.CFZ3.[2] ".10 - " Resources.SubnetOctets.CFZ3.[2] ".63"] ))
-        gateway:  (( Resources.SubnetOctets.CFZ3.[2] ".1" ))
-        dns:      (( [Resources.SubnetOctets.BOSHZ1.[2] ".2"] ))
-        cloud_properties:
-          security_groups: (( [Resources.SecurityGroupName.Internal] ))
-          subnet: (( Resources.Subnet.CFZ3 ))
 
 resource_pools:
   - name: small_z1
@@ -69,58 +45,6 @@ resource_pools:
     cloud_properties:
       instance_type: (( instance_types.router ))
       availability_zone: (( meta.zones.z1 ))
-      elbs: (( [Resources.LoadBalancer.CFELB] ))
-
-  - name: small_z2
-    cloud_properties:
-      instance_type: (( instance_types.small ))
-      availability_zone: (( meta.zones.z2 ))
-
-  - name: medium_z2
-    cloud_properties:
-      instance_type: (( instance_types.medium ))
-      availability_zone: (( meta.zones.z2 ))
-
-  - name: large_z2
-    cloud_properties:
-      instance_type: (( instance_types.large ))
-      availability_zone: (( meta.zones.z2 ))
-
-  - name: runner_z2
-    cloud_properties:
-      instance_type: (( instance_types.runner ))
-      availability_zone: (( meta.zones.z2 ))
-
-  - name: router_z2
-    cloud_properties:
-      instance_type: (( instance_types.router ))
-      availability_zone: (( meta.zones.z2 ))
-      elbs: (( [Resources.LoadBalancer.CFELB] ))
-
-  - name: small_z3
-    cloud_properties:
-      instance_type: (( instance_types.small ))
-      availability_zone: (( meta.zones.z3 ))
-
-  - name: medium_z3
-    cloud_properties:
-      instance_type: (( instance_types.medium ))
-      availability_zone: (( meta.zones.z3 ))
-
-  - name: large_z3
-    cloud_properties:
-      instance_type: (( instance_types.large ))
-      availability_zone: (( meta.zones.z3 ))
-
-  - name: runner_z3
-    cloud_properties:
-      instance_type: (( instance_types.runner ))
-      availability_zone: (( meta.zones.z3 ))
-
-  - name: router_z3
-    cloud_properties:
-      instance_type: (( instance_types.router ))
-      availability_zone: (( meta.zones.z3 ))
       elbs: (( [Resources.LoadBalancer.CFELB] ))
 
   - name: small_errand
@@ -152,12 +76,8 @@ properties:
       secret_access_key: (( SecretAccessKey ))
       subnet_ids:
         cf1: (( Resources.Subnet.CFZ1 ))
-        cf2: (( Resources.Subnet.CFZ2 ))
-        cf3: (( Resources.Subnet.CFZ3 ))
 
       availability_zone: (( meta.zones.z1 ))
-      availability_zone2: (( meta.zones.z2 ))
-      availability_zone3: (( meta.zones.z3 ))
 
   app_ssh:
     host_key_fingerprint: (( cf_credentials.ssh_host_key_fingerprint ))

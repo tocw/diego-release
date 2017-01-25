@@ -41,31 +41,7 @@ default_subnets:
     route_table:
       internet_gateway: VPCGateway
 
-  - name: CFELBZ2
-    cidr: (( merge ))
-    availability_zone: (( merge ))
-    route_table:
-      internet_gateway: VPCGateway
-
-  - name: CFELBZ3
-    cidr: (( merge ))
-    availability_zone: (( merge ))
-    route_table:
-      internet_gateway: VPCGateway
-
   - name: SSHProxyELBZ1
-    cidr: (( merge ))
-    availability_zone: (( merge ))
-    route_table:
-      internet_gateway: VPCGateway
-
-  - name: SSHProxyELBZ2
-    cidr: (( merge ))
-    availability_zone: (( merge ))
-    route_table:
-      internet_gateway: VPCGateway
-
-  - name: SSHProxyELBZ3
     cidr: (( merge ))
     availability_zone: (( merge ))
     route_table:
@@ -77,31 +53,7 @@ default_subnets:
     route_table:
       instance: NATZ1
 
-  - name: CFZ2
-    cidr: (( merge ))
-    availability_zone: (( merge ))
-    route_table:
-      instance: NATZ1
-
-  - name: CFZ3
-    cidr: (( merge ))
-    availability_zone: (( merge ))
-    route_table:
-      instance: NATZ1
-
   - name: DiegoZ1
-    cidr: (( merge ))
-    availability_zone: (( merge ))
-    route_table:
-      instance: NATZ1
-
-  - name: DiegoZ2
-    cidr: (( merge ))
-    availability_zone: (( merge ))
-    route_table:
-      instance: NATZ1
-
-  - name: DiegoZ3
     cidr: (( merge ))
     availability_zone: (( merge ))
     route_table:
@@ -119,37 +71,7 @@ default_subnets:
     route_table:
       instance: NATZ1
 
-  - name: MySQLZ2
-    cidr: (( merge ))
-    availability_zone: (( merge ))
-    route_table:
-      instance: NATZ1
-
-  - name: MySQLZ3
-    cidr: (( merge ))
-    availability_zone: (( merge ))
-    route_table:
-      instance: NATZ1
-
   - name: DiegoWindowsZ1
-    cidr: (( merge ))
-    availability_zone: (( merge ))
-    route_table:
-      instance: NATZ1
-
-  - name: DiegoWindowsZ2
-    cidr: (( merge ))
-    availability_zone: (( merge ))
-    route_table:
-      instance: NATZ1
-
-  - name: DiegoWindowsZ3
-    cidr: (( merge ))
-    availability_zone: (( merge ))
-    route_table:
-      instance: NATZ1
-
-  - name: DatadogFirehoseNozzle
     cidr: (( merge ))
     availability_zone: (( merge ))
     route_table:
@@ -175,8 +97,6 @@ load_balancers:
       healthy_threshold: 5
     subnets:
       - CFELBZ1
-      - CFELBZ2
-      - CFELBZ3
     security_groups:
       - Web
     cross_zone: true
@@ -194,8 +114,6 @@ load_balancers:
       healthy_threshold: 5
     subnets:
       - SSHProxyELBZ1
-      - SSHProxyELBZ2
-      - SSHProxyELBZ3
     security_groups:
       - SSHProxy
     cross_zone: true

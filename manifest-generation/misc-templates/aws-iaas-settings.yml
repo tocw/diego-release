@@ -11,10 +11,6 @@ iaas_settings:
   subnet_configs:
     - name: diego1
       subnets: (( merge ))
-    - name: diego2
-      subnets: (( merge ))
-    - name: diego3
-      subnets: (( merge ))
     - name: diego-vizzini
       subnets: (( merge || nil ))
     - name: diego-benchmarks
@@ -25,23 +21,7 @@ iaas_settings:
       cloud_properties:
         <<: (( merge ))
         instance_type: m3.medium
-    - name: access_z2
-      cloud_properties:
-        <<: (( merge ))
-        instance_type: m3.medium
-    - name: access_z3
-      cloud_properties:
-        <<: (( merge ))
-        instance_type: m3.medium
     - name: brain_z1
-      cloud_properties:
-        <<: (( merge ))
-        instance_type: m3.medium
-    - name: brain_z2
-      cloud_properties:
-        <<: (( merge ))
-        instance_type: m3.medium
-    - name: brain_z3
       cloud_properties:
         <<: (( merge ))
         instance_type: m3.medium
@@ -49,23 +29,7 @@ iaas_settings:
       cloud_properties:
         <<: (( merge ))
         instance_type: m3.medium
-    - name: cc_bridge_z2
-      cloud_properties:
-        <<: (( merge ))
-        instance_type: m3.medium
-    - name: cc_bridge_z3
-      cloud_properties:
-        <<: (( merge ))
-        instance_type: m3.medium
     - name: cell_z1
-      cloud_properties:
-        <<: (( merge ))
-        instance_type: r3.xlarge
-    - name: cell_z2
-      cloud_properties:
-        <<: (( merge ))
-        instance_type: r3.xlarge
-    - name: cell_z3
       cloud_properties:
         <<: (( merge ))
         instance_type: r3.xlarge
@@ -73,35 +37,11 @@ iaas_settings:
       cloud_properties:
         <<: (( merge ))
         instance_type: r3.xlarge
-    - name: colocated_z2
-      cloud_properties:
-        <<: (( merge ))
-        instance_type: r3.xlarge
-    - name: colocated_z3
-      cloud_properties:
-        <<: (( merge ))
-        instance_type: r3.xlarge
     - name: database_z1
       cloud_properties:
         <<: (( merge ))
         instance_type: m3.large
-    - name: database_z2
-      cloud_properties:
-        <<: (( merge ))
-        instance_type: m3.large
-    - name: database_z3
-      cloud_properties:
-        <<: (( merge ))
-        instance_type: m3.large
     - name: route_emitter_z1
-      cloud_properties:
-        <<: (( merge ))
-        instance_type: m3.medium
-    - name: route_emitter_z2
-      cloud_properties:
-        <<: (( merge ))
-        instance_type: m3.medium
-    - name: route_emitter_z3
       cloud_properties:
         <<: (( merge ))
         instance_type: m3.medium

@@ -2,8 +2,6 @@
 meta:
   zones:
     z1: (( merge ))
-    z2: (( merge ))
-    z3: (( merge ))
 
   fog_config:
     region: (( merge ))
@@ -12,30 +10,6 @@ director_uuid: (( merge ))
 
 networks:
   - name: cf1
-    type: manual
-    subnets:
-      - range:    (( merge ))
-        reserved: (( merge ))
-        static:   (( merge ))
-        gateway:  (( merge ))
-        dns:      (( merge ))
-        cloud_properties:
-          security_groups: (( merge ))
-          subnet: (( merge ))
-
-  - name: cf2
-    type: manual
-    subnets:
-      - range:    (( merge ))
-        reserved: (( merge ))
-        static:   (( merge ))
-        gateway:  (( merge ))
-        dns:      (( merge ))
-        cloud_properties:
-          security_groups: (( merge ))
-          subnet: (( merge ))
-
-  - name: cf3
     type: manual
     subnets:
       - range:    (( merge ))
@@ -75,58 +49,6 @@ resource_pools:
       availability_zone: (( merge ))
       elbs: (( merge ))
 
-  - name: small_z2
-    cloud_properties:
-      instance_type: (( merge ))
-      availability_zone: (( merge ))
-
-  - name: medium_z2
-    cloud_properties:
-      instance_type: (( merge ))
-      availability_zone: (( merge ))
-
-  - name: large_z2
-    cloud_properties:
-      instance_type: (( merge ))
-      availability_zone: (( merge ))
-
-  - name: runner_z2
-    cloud_properties:
-      instance_type: (( merge ))
-      availability_zone: (( merge ))
-
-  - name: router_z2
-    cloud_properties:
-      instance_type: (( merge ))
-      availability_zone: (( merge ))
-      elbs: (( merge ))
-
-  - name: small_z3
-    cloud_properties:
-      instance_type: (( merge ))
-      availability_zone: (( merge ))
-
-  - name: medium_z3
-    cloud_properties:
-      instance_type: (( merge ))
-      availability_zone: (( merge ))
-
-  - name: large_z3
-    cloud_properties:
-      instance_type: (( merge ))
-      availability_zone: (( merge ))
-
-  - name: runner_z3
-    cloud_properties:
-      instance_type: (( merge ))
-      availability_zone: (( merge ))
-
-  - name: router_z3
-    cloud_properties:
-      instance_type: (( merge ))
-      availability_zone: (( merge ))
-      elbs: (( merge ))
-
   - name: small_errand
     cloud_properties:
       instance_type: (( merge ))
@@ -148,7 +70,7 @@ properties:
   # needed by cf-release
   domain: (( merge ))
   system_domain: (( merge ))
-  system_domain_organization: ~
+  system_domain_organization: grape
   app_domains:
     - (( merge ))
 
@@ -158,12 +80,8 @@ properties:
       secret_access_key: (( merge ))
       subnet_ids:
         cf1: (( merge ))
-        cf2: (( merge ))
-        cf3: (( merge ))
 
       availability_zone: (( merge ))
-      availability_zone2: (( merge ))
-      availability_zone3: (( merge ))
 
   app_ssh:
     host_key_fingerprint: (( merge ))
